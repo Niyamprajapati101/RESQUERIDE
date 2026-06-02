@@ -1,4 +1,4 @@
-const BASE = "http://localhost:5000/api";
+const BASE = "https://resqueride.onrender.com/api";
 
 // Helper to get auth headers with JWT token
 const getHeaders = () => {
