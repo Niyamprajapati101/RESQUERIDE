@@ -45,7 +45,7 @@ function Header() {
           <h1 className={`font-bold text-lg md:text-xl ${theme === 'light' ? 'text-black' : 'text-white'}`}>RESQUERIDE</h1>
         </div>
 
-        {/* Nav */}
+        {/* Nav (Desktop Only) */}
         <nav className={`hidden lg:flex gap-6 xl:gap-8 ${theme === 'light' ? 'text-black' : 'text-white'} text-shadow-2xs`}>
           <Link className={`${theme === 'light' ? 'text-blue-600' : 'text-[#94d2bd]'} font-semibold`} to="/">Home</Link>
           <Link className={`${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-[#94d2bd]'} transition`} to="/cars">Cars</Link>
@@ -55,8 +55,9 @@ function Header() {
           <Link className={`${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-[#94d2bd]'} transition`} to="/about">About Us</Link>
         </nav>
 
-        {/* Theme Toggle - Glass Button */}
-        <div className="flex items-center">
+        {/* Desktop Theme Toggle & Auth */}
+        <div className="hidden lg:flex items-center gap-4 shrink-0">
+          {/* Theme Toggle - Glass Button */}
           <button
             onClick={toggleTheme}
             className="relative inline-flex items-center px-1 py-1 bg-white/20 backdrop-blur-md border border-white/30 rounded-full hover:bg-white/30 hover:border-white/40 transition-all duration-300 shadow-lg w-16 h-10"
@@ -66,21 +67,19 @@ function Header() {
               theme === 'light' ? 'left-1' : 'right-1'
             }`}></div>
           </button>
-        </div>
 
-        {/* Auth section */}
-        <div className="flex gap-2 md:gap-3 items-center shrink-0">
+          {/* Auth section */}
           {user ? (
             // Logged in — show avatar + dropdown
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="flex items-center gap-1.5 md:gap-2 bg-white/20 border border-white/30 hover:bg-white/30 transition px-2 md:px-3 py-1 md:py-1.5 rounded-full"
+                className="flex items-center gap-2 bg-white/20 border border-white/30 hover:bg-white/30 transition px-3 py-1.5 rounded-full"
               >
-                <div className="w-6 h-6 md:w-7 md:h-7 rounded-full bg-[#94d2bd] flex items-center justify-center text-white text-xs font-black">
+                <div className="w-7 h-7 rounded-full bg-[#94d2bd] flex items-center justify-center text-white text-xs font-black">
                   {user.name?.charAt(0).toUpperCase()}
                 </div>
-                <span className="text-white text-xs md:text-sm font-semibold max-w-[70px] md:max-w-[100px] truncate">{user.name}</span>
+                <span className="text-white text-sm font-semibold max-w-[100px] truncate">{user.name}</span>
                 <svg className="w-3 h-3 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -131,27 +130,27 @@ function Header() {
           ) : (
             // Not logged in — show Login + Signup
             <>
-              <Link to="/login" className="hidden sm:block">
-                <button className="bg-white/40 border border-gray-200 backdrop-blur-1xl hover:bg-[#94d2bd] hover:text-white px-3 md:px-4 py-1.5 md:py-2 rounded-lg transition text-xs md:text-sm">
+              <Link to="/login">
+                <button className="bg-white/40 border border-gray-200 backdrop-blur-1xl hover:bg-[#94d2bd] hover:text-white px-4 py-2 rounded-lg transition text-sm">
                   Login
                 </button>
               </Link>
               <Link to="/signup">
-                <button className="bg-white/40 border border-gray-200 backdrop-blur-1xl hover:bg-[#94d2bd] hover:text-white px-3 md:px-4 py-1.5 md:py-2 rounded-lg transition text-xs md:text-sm">
+                <button className="bg-white/40 border border-gray-200 backdrop-blur-1xl hover:bg-[#94d2bd] hover:text-white px-4 py-2 rounded-lg transition text-sm">
                   Signup
                 </button>
               </Link>
             </>
           )}
-
-          {/* Mobile Menu Button */}
-          <button 
-            className="lg:hidden p-1 rounded-md text-gray-500 hover:text-gray-900 transition-colors"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X size={24} className={theme === 'light' ? 'text-black' : 'text-white'} /> : <Menu size={24} className={theme === 'light' ? 'text-black' : 'text-white'} />}
-          </button>
         </div>
+
+        {/* Mobile Menu Button (Only visible on small screens) */}
+        <button 
+          className="lg:hidden p-2 rounded-md text-gray-500 hover:text-gray-900 transition-colors ml-auto"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? <X size={28} className={theme === 'light' ? 'text-black' : 'text-white'} /> : <Menu size={28} className={theme === 'light' ? 'text-black' : 'text-white'} />}
+        </button>
 
       </div>
 
@@ -160,15 +159,60 @@ function Header() {
         <div className={`absolute top-full mt-2 w-[90%] left-[5%] p-5 rounded-2xl shadow-xl flex flex-col gap-4 z-50 lg:hidden border ${
           theme === 'light' ? 'bg-white border-gray-200 text-black' : 'bg-[#1a1a1a] border-white/10 text-white'
         }`}>
+          <div className="flex justify-between items-center border-b border-gray-500/20 pb-4 mb-2">
+            <span className="font-bold text-sm">MENU</span>
+            {/* Theme Toggle inside mobile menu */}
+            <button
+              onClick={toggleTheme}
+              className="relative inline-flex items-center px-1 py-1 bg-gray-500/20 border border-gray-500/30 rounded-full transition-all duration-300 w-12 h-7"
+            >
+              <div className={`absolute w-5 h-5 rounded-full bg-white border border-gray-400 transition-all duration-500 ease-out ${
+                theme === 'light' ? 'left-1' : 'right-1'
+              }`}></div>
+            </button>
+          </div>
+
           <Link onClick={() => setMobileMenuOpen(false)} className="font-semibold border-b border-gray-500/20 pb-2" to="/">Home</Link>
           <Link onClick={() => setMobileMenuOpen(false)} className="hover:text-[#94d2bd] transition border-b border-gray-500/20 pb-2" to="/cars">Cars</Link>
           <Link onClick={() => setMobileMenuOpen(false)} className="hover:text-[#94d2bd] transition border-b border-gray-500/20 pb-2" to="/assistance">Assistance</Link>
           <Link onClick={() => setMobileMenuOpen(false)} className="hover:text-[#94d2bd] transition border-b border-gray-500/20 pb-2" to="/contact">Contact</Link>
           <Link onClick={() => setMobileMenuOpen(false)} className="hover:text-[#94d2bd] transition border-b border-gray-500/20 pb-2" to="/bookings">My Bookings</Link>
           <Link onClick={() => setMobileMenuOpen(false)} className="hover:text-[#94d2bd] transition border-b border-gray-500/20 pb-2" to="/about">About Us</Link>
-          {!user && (
-            <Link onClick={() => setMobileMenuOpen(false)} className="hover:text-[#94d2bd] transition sm:hidden" to="/login">Login</Link>
-          )}
+          
+          <div className="mt-2 flex flex-col gap-3">
+            {user ? (
+              <>
+                <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-500/10">
+                  <div className="w-8 h-8 rounded-full bg-[#94d2bd] flex items-center justify-center text-white text-sm font-black">
+                    {user.name?.charAt(0).toUpperCase()}
+                  </div>
+                  <div>
+                    <p className="font-bold text-sm">{user.name}</p>
+                    <p className="text-xs opacity-60">{user.email}</p>
+                  </div>
+                </div>
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-red-400 bg-red-400/10 text-sm font-bold w-full"
+                >
+                  🚪 Logout
+                </button>
+              </>
+            ) : (
+              <div className="grid grid-cols-2 gap-3">
+                <Link onClick={() => setMobileMenuOpen(false)} to="/login" className="w-full">
+                  <button className="w-full bg-gray-500/20 hover:bg-gray-500/30 px-4 py-2 rounded-lg transition text-sm font-bold">
+                    Login
+                  </button>
+                </Link>
+                <Link onClick={() => setMobileMenuOpen(false)} to="/signup" className="w-full">
+                  <button className="w-full bg-[#94d2bd] hover:bg-[#7bbda8] text-white px-4 py-2 rounded-lg transition text-sm font-bold">
+                    Signup
+                  </button>
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>
