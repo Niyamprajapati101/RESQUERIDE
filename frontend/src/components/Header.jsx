@@ -50,9 +50,9 @@ function Header() {
         } lg:border lg:backdrop-blur-md lg:px-16 mt-4 md:mt-12 lg:py-2 lg:rounded-full lg:shadow-lg flex items-center justify-center lg:justify-between gap-4 md:gap-8 w-auto relative`}>
 
           {/* Logo */}
-          <div className="flex flex-col items-center leading-none shrink-0">
+          <div className="flex items-center gap-2 md:gap-3 shrink-0">
             <img src={logo} className="h-10 md:h-12 w-auto object-contain" />
-            <h1 className={`font-bold text-lg md:text-xl ${theme === 'light' ? 'text-black' : 'text-white'}`}>RESQUERIDE</h1>
+            <h1 className={`font-bold text-xl md:text-2xl tracking-wide ${theme === 'light' ? 'text-black' : 'text-white'}`}>RESQUERIDE</h1>
           </div>
 
           {/* Nav (Desktop Only) */}
