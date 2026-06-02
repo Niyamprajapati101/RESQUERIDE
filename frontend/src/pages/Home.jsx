@@ -56,20 +56,31 @@ function Homecar() {
   return (
     <div className={`${theme === 'light' ? 'bg-white text-gray-900' : 'bg-gradient-to-r from-black via-[#020b1f] to-black text-gray-300'}`}>
 
-      <div className="relative w-full">
-        <img src={theme === 'light' ? img1Light : img1} alt="hero car" className={`mt-24 md:mt-50 w-full h-full object-cover ${theme === 'light' ? 'opacity-100' : 'opacity-80'}`} />
-        <div className={`absolute backdrop-blur-md top-[40%] md:top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 md:p-8 rounded-2xl flex flex-col md:flex-row items-center gap-5 md:gap-10 w-[90%] md:w-auto text-center md:text-left ${
-          theme === 'light'
-            ? 'bg-white/60 border border-gray-300'
-            : 'bg-white/30 border border-gray-200'
-        }`}>
+      <div className="w-full flex flex-col md:relative mt-16 md:mt-0">
+        {/* Hero Image */}
+        <img 
+          src={theme === 'light' ? img1Light : img1} 
+          alt="hero car" 
+          className={`w-full h-auto md:h-full object-cover md:mt-50 ${theme === 'light' ? 'opacity-100' : 'opacity-80'}`} 
+        />
+        
+        {/* Hero Text Box */}
+        <div className={`
+          mt-6 md:mt-0 px-6 md:px-8 py-4 md:py-8 flex flex-col md:flex-row items-center gap-5 md:gap-10 text-center md:text-left
+          md:absolute md:top-1/3 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-auto md:rounded-2xl md:backdrop-blur-md
+          ${
+            theme === 'light'
+              ? 'md:bg-white/60 md:border md:border-gray-300 text-black'
+              : 'md:bg-white/30 md:border md:border-gray-200 text-white'
+          }
+        `}>
           <div>
-            <p className={`text-xs md:text-sm font-semibold ${theme === 'light' ? 'text-black' : 'text-black'}`}>RESQUERIDE</p>
-            <h3 className={`text-lg md:text-xl font-bold ${theme === 'light' ? 'text-gray-900' : 'text-[#22223b]'}`}>Fast bookings. Faster rides</h3>
-            <p className={`text-xs md:text-sm mt-1 md:mt-2 ${theme === 'light' ? 'text-gray-800' : 'text-black'}`}>Rent Your Dream Car. Transparent pricing. Book in seconds.</p>
+            <p className="text-xs md:text-sm font-bold tracking-widest text-[#94d2bd] md:text-black">RESQUERIDE</p>
+            <h3 className={`text-2xl md:text-xl font-bold mt-1 ${theme === 'light' ? 'text-gray-900' : 'text-white md:text-[#22223b]'}`}>Fast bookings. Faster rides</h3>
+            <p className={`text-sm mt-2 ${theme === 'light' ? 'text-gray-700 md:text-gray-800' : 'text-gray-300 md:text-black'}`}>Rent Your Dream Car. Transparent pricing. Book in seconds.</p>
           </div>
-          <Link to="/cars">
-            <button className="bg-[#94d2bd] hover:bg-[#7bbda8] text-white px-6 md:px-9 py-2.5 md:py-3 rounded-xl shadow-lg transition w-full md:w-auto">
+          <Link to="/cars" className="w-full md:w-auto mt-2 md:mt-0">
+            <button className="bg-[#94d2bd] hover:bg-[#7bbda8] text-white font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-[#94d2bd]/30 transition w-full md:w-auto text-lg md:text-base">
               Resque Now
             </button>
           </Link>
