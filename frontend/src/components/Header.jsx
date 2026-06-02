@@ -43,7 +43,11 @@ function Header() {
     <>
       <div className="absolute top-3 w-full flex justify-center z-50">
         {/* TOP BAR */}
-        <div className={`${theme === 'light' ? 'bg-white border-gray-300' : 'bg-white/40 border-gray-200'} border backdrop-blur-1xl px-6 lg:px-16 mt-4 md:mt-12 py-2 rounded-full shadow-lg flex items-center justify-center lg:justify-between gap-4 md:gap-8 w-auto relative`}>
+        <div className={`${
+          theme === 'light' 
+            ? 'lg:bg-white lg:border-gray-300' 
+            : 'lg:bg-white/40 lg:border-gray-200'
+        } lg:border lg:backdrop-blur-md lg:px-16 mt-4 md:mt-12 lg:py-2 lg:rounded-full lg:shadow-lg flex items-center justify-center lg:justify-between gap-4 md:gap-8 w-auto relative`}>
 
           {/* Logo */}
           <div className="flex flex-col items-center leading-none shrink-0">
