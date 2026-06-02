@@ -7,6 +7,12 @@ export function BookingProvider({ children }) {
   const [bookings, setBookings] = useState([]);
 
   const loadBookings = useCallback(async () => {
+    const userString = sessionStorage.getItem("rq_user");
+    if (!userString) {
+      setBookings([]);
+      return; // Do not fetch if not logged in
+    }
+
     try {
       const response = await api.getBookings();
       if (!response.success) {
@@ -14,7 +20,7 @@ export function BookingProvider({ children }) {
         return;
       }
       const allBookings = response.bookings || [];
-      const user = JSON.parse(sessionStorage.getItem("rq_user") || "null");
+      const user = JSON.parse(userString);
       if (user) {
         setBookings(allBookings.filter(b => b.userId === user.id));
       } else {
