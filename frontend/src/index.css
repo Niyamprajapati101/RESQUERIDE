@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Marker+Hatch&display=swap');
+@import "tailwindcss";
+
+
+:root {
+  --primary-dark: #561C24;
+  --primary: #6D2932;
+  --secondary: #C7B7A3;
+  --background-light: #E8D8C4;
+}
+
+/* Dark Theme (Default) */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+  background: black;
+  color: white;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  background-color: #f5f5f5;
+  color: #000;
+}
+
+[data-theme="light"] body {
+  background-color: #f5f5f5 !important;
+  color: #000 !important;
+}
+
+[data-theme="light"] * {
+  color: #000;
+}
+
+[data-theme="light"] a {
+  color: #0066cc;
+}
+
+[data-theme="light"] a:hover {
+  color: #0052a3;
+}
+
+[data-theme="light"] h1, [data-theme="light"] h2, [data-theme="light"] h3, [data-theme="light"] h4, [data-theme="light"] h5, [data-theme="light"] h6 {
+  color: #000;
+}
+
+[data-theme="light"] p, [data-theme="light"] span {
+  color: #333;
+}
+
+[data-theme="light"] button, [data-theme="light"] input, [data-theme="light"] textarea, [data-theme="light"] select {
+  background-color: #f0f0f0;
+  border-color: #ddd;
+  color: #000;
+}
+
+[data-theme="light"] img {
+  opacity: 0.9;
+}
+
+[data-theme="light"] .text-white {
+  color: #000 !important;
+}
+
+[data-theme="light"] .text-gray-300, [data-theme="light"] .text-gray-400, [data-theme="light"] .text-gray-500 {
+  color: #555 !important;
+}
+
+[data-theme="light"] .bg-black, [data-theme="light"] .bg-white\/5, [data-theme="light"] .bg-white\/10, [data-theme="light"] .bg-white\/20 {
+  background-color: #f5f5f5 !important;
+}
+
+[data-theme="light"] .bg-gradient-to-r, [data-theme="light"] .bg-gradient-to-b, [data-theme="light"] .bg-gradient-to-l {
+  background: linear-gradient(to right, #f5f5f5, #ffffff) !important;
+}
+
+[data-theme="light"] .border-white, [data-theme="light"] .border-white\/10, [data-theme="light"] .border-white\/20 {
+  border-color: #ddd !important;
+}
+
+[data-theme="light"] .border-gray-700 {
+  border-color: #ccc !important;
+}
+
+#login{
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+
+}
+#login1{
+  font-family: "Rubik Marker Hatch", system-ui;
+   font-weight: 400;
+  font-style: normal;
+}
+
+/* Glass Neon Border Animation */
+.glass-card-neon {
+  position: relative;
+}
+.glass-card-neon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from var(--angle, 0deg), transparent 0%, transparent 80%, #94d2bd 90%, #7bbda8 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  pointer-events: none;
+  animation: spin-border 3s linear infinite;
+  z-index: 20;
+}
+
+.glass-card-neon:hover::before {
+  opacity: 1;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin-border {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+/* Fallback for browsers that don't support @property (like Firefox) */
+@-moz-keyframes spin-border-fallback {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.glass-card-neon::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(from 0deg, transparent 0%, transparent 80%, #94d2bd 90%, #7bbda8 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  pointer-events: none;
+  animation: spin-border-fallback 3s linear infinite;
+  z-index: 20;
+}
+
+/* Use fallback only if @property is not supported */
+@supports not (background: paint(something)) {
+    .glass-card-neon::before {
+        display: none;
+    }
+}
+@supports (background: paint(something)) or (@property --angle) {
+    .glass-card-neon::after {
+        display: none;
+    }
+}
+
+
