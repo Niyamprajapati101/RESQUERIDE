@@ -57,19 +57,19 @@ function Homecar() {
     <div className={`${theme === 'light' ? 'bg-white text-gray-900' : 'bg-gradient-to-r from-black via-[#020b1f] to-black text-gray-300'}`}>
 
       <div className="relative w-full">
-        <img src={theme === 'light' ? img1Light : img1} alt="hero car" className={`mt-50 w-full h-full object-cover ${theme === 'light' ? 'opacity-100' : 'opacity-80'}`} />
-        <div className={`absolute backdrop-blur-md top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 p-8 rounded-2xl flex items-center gap-10 ${
+        <img src={theme === 'light' ? img1Light : img1} alt="hero car" className={`mt-24 md:mt-50 w-full h-full object-cover ${theme === 'light' ? 'opacity-100' : 'opacity-80'}`} />
+        <div className={`absolute backdrop-blur-md top-[40%] md:top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 md:p-8 rounded-2xl flex flex-col md:flex-row items-center gap-5 md:gap-10 w-[90%] md:w-auto text-center md:text-left ${
           theme === 'light'
             ? 'bg-white/60 border border-gray-300'
             : 'bg-white/30 border border-gray-200'
         }`}>
           <div>
-            <p className={`text-sm font-semibold ${theme === 'light' ? 'text-black' : 'text-black'}`}>RESQUERIDE</p>
-            <h3 className={`text-xl font-bold ${theme === 'light' ? 'text-gray-900' : 'text-[#22223b]'}`}>Fast bookings. Faster rides</h3>
-            <p className={`text-sm mt-2 ${theme === 'light' ? 'text-gray-800' : 'text-black'}`}>Rent Your Dream Car. Transparent pricing. Book in seconds.</p>
+            <p className={`text-xs md:text-sm font-semibold ${theme === 'light' ? 'text-black' : 'text-black'}`}>RESQUERIDE</p>
+            <h3 className={`text-lg md:text-xl font-bold ${theme === 'light' ? 'text-gray-900' : 'text-[#22223b]'}`}>Fast bookings. Faster rides</h3>
+            <p className={`text-xs md:text-sm mt-1 md:mt-2 ${theme === 'light' ? 'text-gray-800' : 'text-black'}`}>Rent Your Dream Car. Transparent pricing. Book in seconds.</p>
           </div>
           <Link to="/cars">
-            <button className="bg-[#94d2bd] hover:bg-[#7bbda8] text-white px-9 py-3 rounded-xl shadow-lg transition">
+            <button className="bg-[#94d2bd] hover:bg-[#7bbda8] text-white px-6 md:px-9 py-2.5 md:py-3 rounded-xl shadow-lg transition w-full md:w-auto">
               Resque Now
             </button>
           </Link>
@@ -77,12 +77,12 @@ function Homecar() {
       </div>
 
       
-      <section className="py-16 px-6 text-center">
+      <section className="py-12 md:py-16 px-4 md:px-6 text-center">
         <span className="inline-flex items-center gap-2 text-amber-400 border border-amber-400/40 rounded-full px-5 py-1 text-sm mb-4">
           <Zap size={16} /> Premium Fleet Selection
         </span>
-        <h2 className="text-5xl text-[#94d2bd] uppercase font-bold">Our Car Collection</h2>
-        <p className="text-gray-400  text-xl mt-3 mb-2">
+        <h2 className="text-3xl md:text-5xl text-[#94d2bd] uppercase font-bold">Our Car Collection</h2>
+        <p className="text-gray-400 text-sm md:text-xl mt-3 mb-2">
           Discover premium vehicles with exceptional performance and comfort for your next journey
         </p>
         <HomeCars />
