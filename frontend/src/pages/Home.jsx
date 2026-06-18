@@ -98,7 +98,13 @@ function Homecar() {
             </p>
           </div>
           <Link to="/cars" className="w-full md:w-auto mt-2 md:mt-0">
-            <button className=" backdrop-blur-2xl hover:bg-[#7bbda8] text-black border-b-2 font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-[#94d2bd]/30 transition w-full md:w-auto text-lg md:text-base">
+            <button
+              className={`font-bold px-8 py-3.5 rounded-xl shadow-lg transition w-full md:w-auto text-lg md:text-base border-b-2 ${
+                theme === 'light'
+                  ? 'bg-blue-600 hover:bg-blue-700 text-white border-blue-700 shadow-blue-600/20'
+                  : 'bg-[#94d2bd] hover:bg-[#7bbda8] text-black border-[#7bbda8] shadow-[#94d2bd]/20'
+              }`}
+            >
               Resque Now
             </button>
           </Link>

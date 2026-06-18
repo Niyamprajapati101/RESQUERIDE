@@ -40,10 +40,10 @@ function HomeCars() {
       </div>
       <Link to="/cars">
         <button
-          className={`mt-16 backdrop-blur-2xl hover:bg-[#7bbda8] text-black border-b-2 font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-[#94d2bd]/30 ${
+          className={`mt-16 font-bold px-8 py-3.5 rounded-xl shadow-lg transition text-lg md:text-base border-b-2 ${
             theme === 'light'
-              ? 'bg-blue-600 hover:bg-blue-700 text-white'
-              : 'backdrop-blur-2xlbg-[#94d2bd] hover:bg-[#7bbda8] text-white'
+              ? 'bg-blue-600 hover:bg-blue-700 text-white border-blue-700 shadow-blue-600/20'
+              : 'bg-[#94d2bd] hover:bg-[#7bbda8] text-black border-[#7bbda8] shadow-[#94d2bd]/20'
           }`}
         >
           View All Cars
