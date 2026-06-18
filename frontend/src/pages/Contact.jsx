@@ -49,20 +49,18 @@ function Contact() {
   };
 
   return (
-    <div className={`w-full min-h-screen font-sans relative ${theme === 'light' ? 'bg-white' : 'bg-black'}`}>
-
+    <div
+      style={{ fontFamily: "'Syne', sans-serif", fontWeight: 600 }}
+      className={`w-full min-h-screen font-sans relative ${theme === 'light' ? 'bg-white' : 'bg-black'}`}
+    >
       {/* Background */}
-      <img
-        src={mclaren}
-        alt="bg"
-        className="absolute inset-0 w-full h-full object-cover z-0 opacity-20"
-      />
+      <img src={mclaren} alt="bg" className="absolute inset-0 w-full h-full object-cover z-0 opacity-20" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/85 to-black z-0" />
 
       {/* Hero */}
       <div className="relative z-10 w-full flex flex-col items-center justify-center text-center px-4 pt-44 pb-16">
         <p className="text-[#94d2bd] text-xs tracking-[0.5em] uppercase font-semibold mb-4">— Get In Touch</p>
-        <h1 className="text-white text-6xl md:text-7xl font-black tracking-tight leading-tight">
+        <h1 className="text-white text-4xl md:text-4xl font-black tracking-tight leading-tight">
           Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#bfe8dd] to-[#94d2bd]">Talk</span>
         </h1>
         <p className="text-white/40 text-base mt-5 max-w-lg leading-relaxed">
@@ -72,7 +70,6 @@ function Contact() {
 
       {/* Main Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 pb-24">
-
         {/* Info Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
           {contactInfo.map((c) => (
@@ -83,7 +80,9 @@ function Contact() {
               <div className="text-3xl mb-3">{c.icon}</div>
               <h3 className="text-white font-bold text-sm mb-2">{c.title}</h3>
               {c.lines.map((l) => (
-                <p key={l} className="text-white/40 text-xs leading-relaxed">{l}</p>
+                <p key={l} className="text-white/40 text-xs leading-relaxed">
+                  {l}
+                </p>
               ))}
             </div>
           ))}
@@ -91,20 +90,38 @@ function Contact() {
 
         {/* Two Column: Map + Form */}
         <div className="grid md:grid-cols-2 gap-10">
-
           {/* Left — Social + FAQ */}
           <div className="flex flex-col gap-6">
-
             {/* Social Media */}
             <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8">
               <p className="text-[#94d2bd] text-xs tracking-[0.4em] uppercase font-semibold mb-2">— Follow Us</p>
               <h2 className="text-white text-xl font-black mb-6">Stay Connected</h2>
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { icon: "📸", label: "Instagram", handle: "@resqueride", color: "hover:border-pink-500/50 hover:bg-pink-500/5" },
-                  { icon: "𝕏", label: "Twitter / X", handle: "@resqueride", color: "hover:border-sky-500/50 hover:bg-sky-500/5" },
-                  { icon: "▶", label: "YouTube", handle: "RESQUERIDE Official", color: "hover:border-red-500/50 hover:bg-red-500/5" },
-                  { icon: "in", label: "LinkedIn", handle: "RESQUERIDE", color: "hover:border-blue-500/50 hover:bg-blue-500/5" },
+                  {
+                    icon: '📸',
+                    label: 'Instagram',
+                    handle: '@resqueride',
+                    color: 'hover:border-pink-500/50 hover:bg-pink-500/5',
+                  },
+                  {
+                    icon: '𝕏',
+                    label: 'Twitter / X',
+                    handle: '@resqueride',
+                    color: 'hover:border-sky-500/50 hover:bg-sky-500/5',
+                  },
+                  {
+                    icon: '▶',
+                    label: 'YouTube',
+                    handle: 'RESQUERIDE Official',
+                    color: 'hover:border-red-500/50 hover:bg-red-500/5',
+                  },
+                  {
+                    icon: 'in',
+                    label: 'LinkedIn',
+                    handle: 'RESQUERIDE',
+                    color: 'hover:border-blue-500/50 hover:bg-blue-500/5',
+                  },
                 ].map((s) => (
                   <div
                     key={s.label}
@@ -120,8 +137,6 @@ function Contact() {
               </div>
             </div>
 
-
-
             {/* McLaren Image */}
             <div className="rounded-3xl overflow-hidden border border-white/10 h-56 relative group">
               <img
@@ -135,7 +150,6 @@ function Contact() {
                 <p className="text-white font-black text-lg">McLaren 720S</p>
               </div>
             </div>
-
           </div>
 
           {/* Right — Contact Form */}
@@ -197,7 +211,7 @@ function Contact() {
                 type="submit"
                 className="w-full bg-gradient-to-r from-[#94d2bd] to-[#7bbda8] hover:from-[#7bbda8] hover:to-[#609b8a] text-white font-bold py-3 rounded-xl tracking-widest text-sm uppercase shadow-[0_4px_20px_rgba(148,210,189,0.35)] transition-all active:scale-[0.98]"
               >
-                {sent ? "✓ Message Sent!" : "Send Message"}
+                {sent ? '✓ Message Sent!' : 'Send Message'}
               </button>
             </form>
           </div>

@@ -43,39 +43,75 @@ function Header() {
     <>
       <div className="absolute top-3 w-full flex justify-center z-50">
         {/* TOP BAR */}
-        <div className={`${
-          theme === 'light' 
-            ? 'lg:bg-white lg:border-gray-300' 
-            : 'lg:bg-white/40 lg:border-gray-200'
-        } lg:border lg:backdrop-blur-md lg:px-16 mt-4 md:mt-12 lg:py-2 lg:rounded-full lg:shadow-lg flex items-center justify-center lg:justify-between gap-4 md:gap-8 w-auto relative`}>
-
+        <div
+          className={`${
+            theme === 'light' ? 'lg:bg-white lg:border-gray-300' : 'lg:bg-white/40 lg:border-gray-200'
+          } lg:border lg:backdrop-blur-md lg:px-16 mt-4 md:mt-12 lg:py-2 lg:rounded-full lg:shadow-lg flex items-center justify-center lg:justify-between gap-4 md:gap-8 w-auto relative`}
+        >
           {/* Logo */}
-          <div className="flex items-center gap-2 md:gap-3 shrink-0">
+          <div className="gap-2 md:gap-3 shrink-0">
             <img src={logo} className="h-10 md:h-12 w-auto object-contain" />
-            <h1 className={`font-bold text-xl md:text-2xl tracking-wide ${theme === 'light' ? 'text-black' : 'text-white'}`}>RESQUERIDE</h1>
+            <h1
+              style={{ fontFamily: "'Syne', sans-serif", fontWeight: 600 }}
+              className={`ml-20 text-xl md:text-2xl tracking-wide ${theme === 'light' ? 'text-black' : 'text-white'}`}
+            >
+              RESQUERIDE
+            </h1>
           </div>
 
           {/* Nav (Desktop Only) */}
-          <nav className={`hidden lg:flex gap-6 xl:gap-8 ${theme === 'light' ? 'text-black' : 'text-white'} text-shadow-2xs`}>
-            <Link className={`${theme === 'light' ? 'text-blue-600' : 'text-[#94d2bd]'} font-semibold`} to="/">Home</Link>
-            <Link className={`${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-[#94d2bd]'} transition`} to="/cars">Cars</Link>
-            <Link className={`${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-[#94d2bd]'} transition`} to="/assistance">Assistance</Link>
-            <Link className={`${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-[#94d2bd]'} transition`} to="/contact">Contact</Link>
-            <Link className={`${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-[#94d2bd]'} transition`} to="/bookings">My Bookings</Link>
-            <Link className={`${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-[#94d2bd]'} transition`} to="/about">About Us</Link>
+          <nav
+            style={{ fontFamily: "'Syne', sans-serif", fontWeight: 500 }}
+            className={` hidden lg:flex gap-6 xl:gap-8 ${theme === 'light' ? 'text-black' : 'text-white'} text-shadow-2xs`}
+          >
+            <Link className={`${theme === 'light' ? 'text-blue-600' : 'text-[#94d2bd]'} font-semibold`} to="/">
+              Home
+            </Link>
+            <Link
+              className={`${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-[#94d2bd]'} transition`}
+              to="/cars"
+            >
+              Cars
+            </Link>
+            <Link
+              className={`${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-[#94d2bd]'} transition`}
+              to="/assistance"
+            >
+              Assistance
+            </Link>
+            <Link
+              className={`${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-[#94d2bd]'} transition`}
+              to="/contact"
+            >
+              Contact
+            </Link>
+            <Link
+              className={`${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-[#94d2bd]'} transition`}
+              to="/bookings"
+            >
+              My Bookings
+            </Link>
+            <Link
+              className={`${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-[#94d2bd]'} transition`}
+              to="/about"
+            >
+              About Us
+            </Link>
           </nav>
 
           {/* Desktop Theme Toggle & Auth */}
-          <div className="hidden lg:flex items-center gap-4 shrink-0">
+          <div className="lg:flex items-center gap-4 shrink-0 ">
             {/* Theme Toggle - Glass Button */}
             <button
               onClick={toggleTheme}
               className="relative inline-flex items-center px-1 py-1 bg-white/20 backdrop-blur-md border border-white/30 rounded-full hover:bg-white/30 hover:border-white/40 transition-all duration-300 shadow-lg w-16 h-10"
             >
               {/* Toggle Circle - Swipes Left to Right */}
-              <div className={`absolute w-8 h-8 rounded-full bg-white/50 backdrop-blur-sm border border-white/60 transition-all duration-500 ease-out ${
-                theme === 'light' ? 'left-1' : 'right-1'
-              }`}></div>
+              <div
+                className={`absolute w-8 h-8 rounded-full bg-white/50 backdrop-blur-sm border border-white/60 transition-all duration-500 ease-out ${
+                  theme === 'light' ? 'left-1' : 'right-1'
+                }`}
+              ></div>
             </button>
 
             {/* Auth section */}
@@ -83,6 +119,7 @@ function Header() {
               // Logged in — show avatar + dropdown
               <div className="relative" ref={dropdownRef}>
                 <button
+
                   onClick={() => setDropdownOpen(!dropdownOpen)}
                   className="flex items-center gap-2 bg-white/20 border border-white/30 hover:bg-white/30 transition px-3 py-1.5 rounded-full"
                 >
@@ -112,19 +149,22 @@ function Header() {
                       <div className="mt-3 grid grid-cols-2 gap-2">
                         <div className="bg-white/5 rounded-lg px-3 py-2">
                           <p className="text-white/30 text-xs">Phone</p>
-                          <p className="text-white text-xs font-semibold">{user.phone || "—"}</p>
+                          <p className="text-white text-xs font-semibold">{user.phone || '—'}</p>
                         </div>
                         <div className="bg-white/5 rounded-lg px-3 py-2">
                           <p className="text-white/30 text-xs">Joined</p>
-                          <p className="text-white text-xs font-semibold">{user.joined || "—"}</p>
+                          <p className="text-white text-xs font-semibold">{user.joined || '—'}</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Actions */}
                     <div className="px-3 py-3 flex flex-col gap-1">
-                      <Link to="/bookings" onClick={() => setDropdownOpen(false)}
-                        className="flex items-center gap-2 px-3 py-2 rounded-xl text-white/60 hover:text-white hover:bg-white/5 text-sm transition">
+                      <Link
+                        to="/bookings"
+                        onClick={() => setDropdownOpen(false)}
+                        className="flex items-center gap-2 px-3 py-2 rounded-xl text-white/60 hover:text-white hover:bg-white/5 text-sm transition"
+                      >
                         My Bookings
                       </Link>
                       <button
@@ -141,12 +181,12 @@ function Header() {
               // Not logged in — show Login + Signup
               <>
                 <Link to="/login">
-                  <button className="bg-white/40 border border-gray-200 backdrop-blur-1xl hover:bg-[#94d2bd] hover:text-white px-4 py-2 rounded-lg transition text-sm">
+                  <button className=" backdrop-blur-2xl hover:bg-[#7bbda8] text-black border-b-2 font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-[#94d2bd]/30 ">
                     Login
                   </button>
                 </Link>
                 <Link to="/signup">
-                  <button className="bg-white/40 border border-gray-200 backdrop-blur-1xl hover:bg-[#94d2bd] hover:text-white px-4 py-2 rounded-lg transition text-sm">
+                  <button className=" backdrop-blur-3xl hover:bg-[#7bbda8] text-black border-b-2 font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-[#94d2bd]/30 ">
                     Signup
                   </button>
                 </Link>
@@ -157,68 +197,97 @@ function Header() {
       </div>
 
       {/* MOBILE BOTTOM NAVIGATION BAR */}
-      <div className={`lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-sm rounded-3xl shadow-2xl px-6 py-3 flex justify-between items-center z-[100] border ${
-        theme === 'light' ? 'bg-white border-gray-200 shadow-gray-200' : 'bg-[#1a1a1a]/95 backdrop-blur-md border-white/10 shadow-black'
-      }`}>
-        
+      <div
+        className={`lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-sm rounded-3xl shadow-2xl px-6 py-3 flex justify-between items-center z-[100] border ${
+          theme === 'light'
+            ? 'bg-white border-gray-200 shadow-gray-200'
+            : 'bg-[#1a1a1a]/95 backdrop-blur-md border-white/10 shadow-black'
+        }`}
+      >
         {[
-          { path: "/", icon: Home },
-          { path: "/cars", icon: Car },
-          { path: "/assistance", icon: Wrench },
-          { path: "/bookings", icon: Calendar },
+          { path: '/', icon: Home },
+          { path: '/cars', icon: Car },
+          { path: '/assistance', icon: Wrench },
+          { path: '/bookings', icon: Calendar },
         ].map((item) => {
           const isActive = currentPath === item.path;
           return (
-            <Link key={item.path} to={item.path} onClick={() => setMobileMenuOpen(false)} className="relative flex flex-col items-center justify-center p-2 rounded-2xl transition-all">
+            <Link
+              key={item.path}
+              to={item.path}
+              onClick={() => setMobileMenuOpen(false)}
+              className="relative flex flex-col items-center justify-center p-2 rounded-2xl transition-all"
+            >
               {isActive && (
-                <div className={`absolute inset-0 rounded-2xl ${theme === 'light' ? 'bg-[#94d2bd]/10' : 'bg-[#94d2bd]/20'}`}></div>
+                <div
+                  className={`absolute inset-0 rounded-2xl ${theme === 'light' ? 'bg-[#94d2bd]/10' : 'bg-[#94d2bd]/20'}`}
+                ></div>
               )}
-              <item.icon size={26} className={`relative z-10 transition-colors ${isActive ? 'text-[#94d2bd]' : 'text-gray-400'}`} />
-              {isActive && (
-                <div className="absolute -bottom-2 w-5 h-1 bg-[#94d2bd] rounded-full"></div>
-              )}
+              <item.icon
+                size={26}
+                className={`relative z-10 transition-colors ${isActive ? 'text-[#94d2bd]' : 'text-gray-400'}`}
+              />
+              {isActive && <div className="absolute -bottom-2 w-5 h-1 bg-[#94d2bd] rounded-full"></div>}
             </Link>
           );
         })}
 
         {/* Profile / Menu Toggle */}
-        <button 
+        <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="relative flex flex-col items-center justify-center p-2 rounded-2xl transition-all"
         >
           {mobileMenuOpen && (
-             <div className={`absolute inset-0 rounded-2xl ${theme === 'light' ? 'bg-[#94d2bd]/10' : 'bg-[#94d2bd]/20'}`}></div>
+            <div
+              className={`absolute inset-0 rounded-2xl ${theme === 'light' ? 'bg-[#94d2bd]/10' : 'bg-[#94d2bd]/20'}`}
+            ></div>
           )}
           {mobileMenuOpen ? (
             <X size={26} className={`relative z-10 transition-colors text-[#94d2bd]`} />
           ) : (
             <User size={26} className={`relative z-10 transition-colors text-gray-400`} />
           )}
-          {mobileMenuOpen && (
-            <div className="absolute -bottom-2 w-5 h-1 bg-[#94d2bd] rounded-full"></div>
-          )}
+          {mobileMenuOpen && <div className="absolute -bottom-2 w-5 h-1 bg-[#94d2bd] rounded-full"></div>}
         </button>
       </div>
 
       {/* Mobile Settings/Profile Dropdown */}
       {mobileMenuOpen && (
-        <div className={`fixed bottom-28 left-1/2 -translate-x-1/2 w-[90%] max-w-sm p-6 rounded-3xl shadow-2xl flex flex-col gap-4 z-50 lg:hidden border ${
-          theme === 'light' ? 'bg-white border-gray-200 text-black shadow-gray-200' : 'bg-[#1a1a1a] border-white/10 text-white shadow-black'
-        }`}>
+        <div
+          className={`fixed bottom-28 left-1/2 -translate-x-1/2 w-[90%] max-w-sm p-6 rounded-3xl shadow-2xl flex flex-col gap-4 z-50 lg:hidden border ${
+            theme === 'light'
+              ? 'bg-white border-gray-200 text-black shadow-gray-200'
+              : 'bg-[#1a1a1a] border-white/10 text-white shadow-black'
+          }`}
+        >
           <div className="flex justify-between items-center border-b border-gray-500/20 pb-4 mb-2">
             <span className="font-bold text-lg">Settings</span>
             <button
               onClick={toggleTheme}
               className="relative inline-flex items-center px-1 py-1 bg-gray-500/20 border border-gray-500/30 rounded-full transition-all duration-300 w-14 h-8 shadow-inner"
             >
-              <div className={`absolute w-6 h-6 rounded-full bg-white shadow-md border border-gray-200 transition-all duration-500 ease-out ${
-                theme === 'light' ? 'left-1' : 'right-1'
-              }`}></div>
+              <div
+                className={`absolute w-6 h-6 rounded-full bg-white shadow-md border border-gray-200 transition-all duration-500 ease-out ${
+                  theme === 'light' ? 'left-1' : 'right-1'
+                }`}
+              ></div>
             </button>
           </div>
 
-          <Link onClick={() => setMobileMenuOpen(false)} className="font-semibold hover:text-[#94d2bd] transition border-b border-gray-500/20 pb-3" to="/about">About Us</Link>
-          <Link onClick={() => setMobileMenuOpen(false)} className="font-semibold hover:text-[#94d2bd] transition border-b border-gray-500/20 pb-3" to="/contact">Contact Support</Link>
+          <Link
+            onClick={() => setMobileMenuOpen(false)}
+            className="font-semibold hover:text-[#94d2bd] transition border-b border-gray-500/20 pb-3"
+            to="/about"
+          >
+            About Us
+          </Link>
+          <Link
+            onClick={() => setMobileMenuOpen(false)}
+            className="font-semibold hover:text-[#94d2bd] transition border-b border-gray-500/20 pb-3"
+            to="/contact"
+          >
+            Contact Support
+          </Link>
 
           <div className="mt-2 flex flex-col gap-3">
             {user ? (

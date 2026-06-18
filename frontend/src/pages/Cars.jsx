@@ -29,28 +29,32 @@ function Cars() {
   const filtered = filterFuel === "All" ? cars : cars.filter(c => c.fuel === filterFuel);
 
   return (
-    <div className={`mt-14 w-full min-h-screen pt-28 md:pt-36 pb-20 ${theme === 'light' ? 'bg-white' : 'bg-gradient-to-b from-black via-[#0a0a0a] to-black'}`}>
-
+    <div
+      style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700 }}
+      className={`mt-14 w-full min-h-screen pt-28 md:pt-36 pb-20 ${theme === 'light' ? 'bg-white' : 'bg-gradient-to-b from-black via-[#0a0a0a] to-black'}`}
+    >
       <div className="text-center mb-8 px-4">
         <p className="text-[#94d2bd] text-xs tracking-[0.4em] uppercase font-semibold mb-3">— Our Fleet</p>
-        <h1 className="text-white text-4xl md:text-5xl font-black tracking-tight">
-          Premium <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#bfe8dd] to-[#94d2bd]">Collection</span>
+        <h1 className="text-white text-4xl md:text-4xl font-black tracking-tight">
+          Premium{' '}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#bfe8dd] to-[#94d2bd]">Collection</span>
         </h1>
         <p className="text-white/30 text-sm md:text-base mt-3 max-w-xl mx-auto leading-relaxed">
-          Every vehicle in our fleet is meticulously maintained and ready to deliver an extraordinary driving experience.
+          Every vehicle in our fleet is meticulously maintained and ready to deliver an extraordinary driving
+          experience.
         </p>
       </div>
 
       {/* Fuel filter */}
       <div className="flex justify-center gap-2 mb-10 flex-wrap px-4">
-        {fuelTypes.map(f => (
+        {fuelTypes.map((f) => (
           <button
             key={f}
             onClick={() => setFilterFuel(f)}
             className={`px-4 md:px-5 py-1.5 md:py-2 rounded-xl text-[10px] md:text-xs font-bold tracking-widest uppercase border transition-all duration-200 ${
               filterFuel === f
-                ? "bg-[#94d2bd] border-[#94d2bd] text-white shadow-[0_4px_15px_rgba(148,210,189,0.38)]"
-                : "bg-white/3 border-white/8 text-white/35 hover:border-[#94d2bd]/30 hover:text-white/60"
+                ? 'bg-[#94d2bd] border-[#94d2bd] text-white shadow-[0_4px_15px_rgba(148,210,189,0.38)]'
+                : 'bg-white/3 border-white/8 text-white/35 hover:border-[#94d2bd]/30 hover:text-white/60'
             }`}
           >
             {f}
@@ -81,9 +85,7 @@ function Cars() {
       </div>
 
       {filtered.length === 0 && (
-        <div className="text-center py-20 text-white/15 text-sm tracking-widest uppercase">
-          No cars found
-        </div>
+        <div className="text-center py-20 text-white/15 text-sm tracking-widest uppercase">No cars found</div>
       )}
     </div>
   );

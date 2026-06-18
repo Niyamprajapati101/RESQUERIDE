@@ -3,6 +3,7 @@ import { useTheme } from "../context/ThemeContext";
 import { useBookings } from "../context/BookingContext";
 import { api } from "../api";
 import BookingModal from "./BookingModal";
+import { CAR_IMAGE_FALLBACK } from "../utils/carImages";
 
 function CarCard({ image, name, price, fuel, seats, carId, carStatus }) {
   const { theme } = useTheme();
@@ -41,17 +42,13 @@ function CarCard({ image, name, price, fuel, seats, carId, carStatus }) {
   }
 
   async function handleConfirmBooking(startDate, endDate, totalPrice, paymentDetails) {
-    try {
-      await addBooking({ carId, image, name, price, fuel, seats }, startDate, endDate, totalPrice, paymentDetails);
+    await addBooking({ carId, image, name, price, fuel, seats }, startDate, endDate, totalPrice, paymentDetails);
 
-      if (carId) {
-        await api.updateCar(carId, { status: "Rented" });
-      }
-
-      setAlreadyBooked(true);
-    } catch (err) {
-      throw err;
+    if (carId) {
+      await api.updateCar(carId, { status: "Rented" });
     }
+
+    setAlreadyBooked(true);
   }
 
   return (
@@ -63,7 +60,15 @@ function CarCard({ image, name, price, fuel, seats, carId, carStatus }) {
       }`}>
 
         <div className="relative overflow-hidden h-48">
-          <img src={image} alt={name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <img
+            src={image}
+            alt={name}
+            onError={(event) => {
+              event.currentTarget.onerror = null;
+              event.currentTarget.src = CAR_IMAGE_FALLBACK;
+            }}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent" />
           <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-md border border-[#94d2bd]/40 text-[#94d2bd] px-3 py-1 rounded-full text-xs font-bold tracking-wider">
             ₹{price.toLocaleString()}/day
@@ -118,5 +123,3 @@ function CarCard({ image, name, price, fuel, seats, carId, carStatus }) {
 }
 
 export default CarCard;
-
-

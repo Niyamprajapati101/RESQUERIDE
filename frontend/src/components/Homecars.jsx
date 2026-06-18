@@ -25,7 +25,7 @@ function HomeCars() {
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-wrap justify-center gap-6 mt-10 px-6">
-        {cars.map(car => (
+        {cars.map((car) => (
           <CarCard
             key={car.id || car._id}
             carId={car.id || car._id}
@@ -39,11 +39,13 @@ function HomeCars() {
         ))}
       </div>
       <Link to="/cars">
-        <button className={`mt-10 mb-6 px-10 py-3 font-semibold rounded-xl shadow-lg transition-all duration-300 hover:scale-105 ${
-          theme === 'light'
-            ? 'bg-blue-600 hover:bg-blue-700 text-white'
-            : 'bg-[#94d2bd] hover:bg-[#7bbda8] text-white'
-        }`}>
+        <button
+          className={`mt-16 backdrop-blur-2xl hover:bg-[#7bbda8] text-black border-b-2 font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-[#94d2bd]/30 ${
+            theme === 'light'
+              ? 'bg-blue-600 hover:bg-blue-700 text-white'
+              : 'backdrop-blur-2xlbg-[#94d2bd] hover:bg-[#7bbda8] text-white'
+          }`}
+        >
           View All Cars
         </button>
       </Link>

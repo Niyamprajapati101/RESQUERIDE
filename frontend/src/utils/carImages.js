@@ -1,28 +1,24 @@
-import brezza from "../assets/CARS/brezaa.jpeg";
-import ertiga from "../assets/CARS/ertiga.jpeg";
-import hondaCity from "../assets/CARS/honda city.jpeg";
-import i20 from "../assets/CARS/i20.jpeg";
-import innovaHycross from "../assets/CARS/innvo hycros.jpeg";
-import swift from "../assets/CARS/swift.jpeg";
-import nexonEv from "../assets/CARS/tata nexon EV.jpeg";
-import thar from "../assets/CARS/thar.jpeg";
-import wagonr from "../assets/CARS/wagonar.jpeg";
-
-const carImageByName = {
-  "Maruti Suzuki Brezza": brezza,
-  "Maruti Suzuki Ertiga": ertiga,
-  "Honda City": hondaCity,
-  "Hyundai i20": i20,
-  "Toyota Innova Hycross": innovaHycross,
-  "Maruti Suzuki Swift Dzire": swift,
-  "Tata Nexon EV": nexonEv,
-  "Mahindra Thar": thar,
-  "Maruti Suzuki WagonR": wagonr,
+const imageByCarName = {
+  "Maruti Suzuki Swift Dzire": "/cars/swift.jpeg",
+  "Toyota Innova Crysta": "/cars/C1.jpg",
+  "Hyundai Creta": "/cars/C2.png",
+  "Mahindra Thar": "/cars/thar.jpeg",
+  "Maruti Suzuki Ertiga": "/cars/ertiga.jpeg",
+  "Toyota Fortuner": "/cars/C3.jpg",
+  "Hyundai i20": "/cars/i20.jpeg",
+  "Kia Seltos": "/cars/C4.jpg",
+  "Maruti Suzuki WagonR": "/cars/wagonar.jpeg",
+  "Tata Nexon": "/cars/C5.jpg",
+  "Tata Nexon EV": "/cars/tata nexon EV.jpeg",
+  "Mahindra XUV700": "/cars/C6.jpg",
+  "Honda City": "/cars/honda city.jpeg",
+  "Maruti Suzuki Brezza": "/cars/brezaa.jpeg",
+  "Toyota Innova Hycross": "/cars/innvo hycros.jpeg",
 };
 
-export function getCarImage(name, fallback) {
-  return carImageByName[name] || fallback || "https://via.placeholder.com/400x250?text=Car";
+export const CAR_IMAGE_FALLBACK = "/cars/C1.jpg";
+
+export function getCarImage(name, image) {
+  return image || imageByCarName[name] || CAR_IMAGE_FALLBACK;
 }
-
-
 
