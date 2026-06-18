@@ -186,13 +186,13 @@ function Header() {
             ) : (
               // Not logged in — show Login + Signup
               <>
-                <Link to="/login">
-                  <button className=" backdrop-blur-2xl hover:bg-[#7bbda8] text-black border-b-2 font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-[#94d2bd]/30 ">
+                 <Link to="/login">
+                  <button className=" backdrop-blur-2xl hover:bg-[#7bbda8] text-white border-b-2 font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-[#94d2bd]/30 ">
                     Login
                   </button>
                 </Link>
                 <Link to="/signup">
-                  <button className=" backdrop-blur-3xl hover:bg-[#7bbda8] text-black border-b-2 font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-[#94d2bd]/30 ">
+                  <button className=" backdrop-blur-3xl hover:bg-[#7bbda8] text-white border-b-2 font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-[#94d2bd]/30 ">
                     Signup
                   </button>
                 </Link>
