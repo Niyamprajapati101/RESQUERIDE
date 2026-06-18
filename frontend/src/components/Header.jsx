@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import logo from "../assets/logocar.png";
-import { Home, Car, Wrench, Calendar, User, X } from "lucide-react";
+import { Home, Car, Wrench, Calendar, User, X, Info, PhoneCall } from "lucide-react";
 
 function Header() {
   const [user, setUser] = useState(null);
@@ -44,16 +44,22 @@ function Header() {
       <div className="absolute top-3 w-full flex justify-center z-50">
         {/* TOP BAR */}
         <div
-          className={`${
-            theme === 'light' ? 'lg:bg-white lg:border-gray-300' : 'lg:bg-white/40 lg:border-gray-200'
-          } lg:border lg:backdrop-blur-md lg:px-16 mt-4 md:mt-12 lg:py-2 lg:rounded-full lg:shadow-lg flex items-center justify-center lg:justify-between gap-4 md:gap-8 w-auto relative`}
+          className={`
+            border backdrop-blur-md px-6 py-2.5 mt-4 rounded-full shadow-lg flex items-center justify-between w-[92%] sm:w-auto relative
+            ${
+              theme === 'light'
+                ? 'bg-white/95 border-gray-200 shadow-gray-100/50 text-black'
+                : 'bg-black/40 border-white/10 shadow-black/40 text-white'
+            }
+            lg:px-16 lg:py-2 lg:mt-12 lg:rounded-full lg:shadow-lg lg:border lg:backdrop-blur-md lg:justify-between gap-4 md:gap-8
+          `}
         >
           {/* Logo */}
-          <div className="gap-2 md:gap-3 shrink-0">
-            <img src={logo} className="h-10 md:h-12 w-auto object-contain" />
+          <div className="flex items-center gap-2 md:gap-3 shrink-0">
+            <img src={logo} className="h-8 md:h-10 w-auto object-contain" />
             <h1
-              style={{ fontFamily: "'Syne', sans-serif", fontWeight: 600 }}
-              className={`ml-20 text-xl md:text-2xl tracking-wide ${theme === 'light' ? 'text-black' : 'text-white'}`}
+              style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700 }}
+              className={`text-lg md:text-xl tracking-wider ${theme === 'light' ? 'text-black' : 'text-white'}`}
             >
               RESQUERIDE
             </h1>
@@ -100,7 +106,7 @@ function Header() {
           </nav>
 
           {/* Desktop Theme Toggle & Auth */}
-          <div className="lg:flex items-center gap-4 shrink-0 ">
+          <div className="hidden lg:flex items-center gap-4 shrink-0">
             {/* Theme Toggle - Glass Button */}
             <button
               onClick={toggleTheme}
@@ -256,48 +262,56 @@ function Header() {
         <div
           className={`fixed bottom-28 left-1/2 -translate-x-1/2 w-[90%] max-w-sm p-6 rounded-3xl shadow-2xl flex flex-col gap-4 z-50 lg:hidden border ${
             theme === 'light'
-              ? 'bg-white border-gray-200 text-black shadow-gray-200'
-              : 'bg-[#1a1a1a] border-white/10 text-white shadow-black'
-          }`}
+              ? 'bg-white/95 border-gray-200/80 text-black shadow-gray-200/40'
+              : 'bg-[#121212]/95 border-white/10 text-white shadow-black/60'
+          } backdrop-blur-xl`}
         >
-          <div className="flex justify-between items-center border-b border-gray-500/20 pb-4 mb-2">
-            <span className="font-bold text-lg">Settings</span>
+          <div className="flex justify-between items-center border-b border-gray-500/10 pb-4 mb-2">
+            <span className="font-bold text-lg tracking-tight">Settings</span>
             <button
               onClick={toggleTheme}
-              className="relative inline-flex items-center px-1 py-1 bg-gray-500/20 border border-gray-500/30 rounded-full transition-all duration-300 w-14 h-8 shadow-inner"
+              className={`relative inline-flex items-center p-1 rounded-full transition-all duration-300 w-14 h-8 ${
+                theme === 'light' ? 'bg-gray-200' : 'bg-white/10'
+              }`}
             >
               <div
-                className={`absolute w-6 h-6 rounded-full bg-white shadow-md border border-gray-200 transition-all duration-500 ease-out ${
-                  theme === 'light' ? 'left-1' : 'right-1'
+                className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300 transform ${
+                  theme === 'light' ? 'translate-x-0 bg-white text-yellow-500 shadow-sm' : 'translate-x-6 bg-[#94d2bd] text-black shadow-md'
                 }`}
-              ></div>
+              >
+                {theme === 'light' ? '☀️' : '🌙'}
+              </div>
             </button>
           </div>
 
           <Link
             onClick={() => setMobileMenuOpen(false)}
-            className="font-semibold hover:text-[#94d2bd] transition border-b border-gray-500/20 pb-3"
+            className="flex items-center gap-3 font-semibold hover:text-[#94d2bd] transition border-b border-gray-500/10 pb-3 text-sm"
             to="/about"
           >
-            About Us
+            <Info size={18} className="text-[#94d2bd]" />
+            <span>About Us</span>
           </Link>
           <Link
             onClick={() => setMobileMenuOpen(false)}
-            className="font-semibold hover:text-[#94d2bd] transition border-b border-gray-500/20 pb-3"
+            className="flex items-center gap-3 font-semibold hover:text-[#94d2bd] transition border-b border-gray-500/10 pb-3 text-sm"
             to="/contact"
           >
-            Contact Support
+            <PhoneCall size={18} className="text-[#94d2bd]" />
+            <span>Contact Support</span>
           </Link>
 
           <div className="mt-2 flex flex-col gap-3">
             {user ? (
               <>
-                <div className="flex items-center gap-4 p-4 rounded-2xl bg-gray-500/10 border border-gray-500/20">
-                  <div className="w-12 h-12 rounded-full bg-[#94d2bd] flex items-center justify-center text-white text-xl font-black shadow-md">
+                <div className={`flex items-center gap-4 p-4 rounded-2xl border ${
+                  theme === 'light' ? 'bg-gray-50 border-gray-200' : 'bg-white/5 border-white/10'
+                }`}>
+                  <div className="w-12 h-12 rounded-full bg-[#94d2bd] flex items-center justify-center text-black text-xl font-black shadow-md">
                     {user.name?.charAt(0).toUpperCase()}
                   </div>
                   <div>
-                    <p className="font-bold text-base">{user.name}</p>
+                    <p className="font-bold text-base tracking-tight">{user.name}</p>
                     <p className="text-xs opacity-60 mt-0.5">{user.email}</p>
                   </div>
                 </div>
@@ -311,12 +325,14 @@ function Header() {
             ) : (
               <div className="grid grid-cols-2 gap-3 mt-2">
                 <Link onClick={() => setMobileMenuOpen(false)} to="/login" className="w-full">
-                  <button className="w-full bg-gray-500/20 hover:bg-gray-500/30 px-4 py-3 rounded-xl transition text-sm font-bold">
+                  <button className={`w-full py-3 rounded-xl transition text-sm font-bold ${
+                    theme === 'light' ? 'bg-gray-100 hover:bg-gray-200 text-black' : 'bg-white/10 hover:bg-white/20 text-white'
+                  }`}>
                     Login
                   </button>
                 </Link>
                 <Link onClick={() => setMobileMenuOpen(false)} to="/signup" className="w-full">
-                  <button className="w-full bg-[#94d2bd] hover:bg-[#7bbda8] text-white px-4 py-3 rounded-xl transition text-sm font-bold shadow-lg shadow-[#94d2bd]/30">
+                  <button className="w-full bg-[#94d2bd] hover:bg-[#7bbda8] text-black py-3 rounded-xl transition text-sm font-bold shadow-lg shadow-[#94d2bd]/20">
                     Signup
                   </button>
                 </Link>

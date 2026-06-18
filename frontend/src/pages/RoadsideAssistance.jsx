@@ -83,7 +83,7 @@ export default function RoadsideAssistance() {
                 <div
                   key={service.id}
                   onClick={() => handleServiceSelect(service.id)}
-                  className={`backdrop-blur-2xl hover:scale-90 text-black border-b-3 font-bold px-8 py-3.5 rounded-xl shadow-xl shadow-[#94d2bd]/30" ${
+                  className={`backdrop-blur-2xl hover:scale-90 text-black border-b-3 font-bold px-8 py-3.5 rounded-xl shadow-xl shadow-[#94d2bd]/30 ${
                     selectedService === service.id
                       ? 'border-[#94d2bd] shadow-[#94d2bd]/30'
                       : 'hover:shadow-xl hover:border-gray-200'

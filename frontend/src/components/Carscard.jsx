@@ -53,7 +53,7 @@ function CarCard({ image, name, price, fuel, seats, carId, carStatus }) {
 
   return (
     <>
-      <div className={`glass-card-neon group relative backdrop-blur-3xl border rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 hover:bg-white/[0.05] w-full max-w-[18rem] sm:w-72 mx-auto sm:mx-0 ${
+      <div className={`glass-card-neon group relative backdrop-blur-3xl border rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 hover:bg-white/[0.05] w-full max-w-[21rem] sm:max-w-none sm:w-72 mx-auto sm:mx-0 ${
         theme === 'light'
           ? 'bg-white border-gray-200 shadow-[0_10px_30px_rgba(0,0,0,0.1)]'
           : 'bg-white/[0.03] border-white/20 border-r border-b border-white/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),_0_20px_40px_rgba(0,0,0,0.8)]'
